@@ -1,0 +1,51 @@
+Fatorial
+<br>
+<input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" id="inputNumber" placeholder="Digite o numero...">
+<button onclick="calculate()">Calcular com For</button>
+<button onclick="calculateWithWhile()">Calcular com While</button>
+<button onclick="calculateWithWhile()">Recursive</button>
+<br>
+Resultado:
+<br>
+<span id="result"></span>
+
+
+
+<script>
+    calculate = () =>{
+        let inputNumber = parseInt(document.getElementById("inputNumber").value);
+        let spanResult = document.getElementById("result");
+        let result = inputNumber;
+        for(let i = inputNumber -1; i >= 1; i--)
+        {
+            result *= i
+        }
+        spanResult.innerHTML = result;
+    }
+
+    calculateWithWhile = () =>{
+        let inputNumber = parseInt(document.getElementById("inputNumber").value);
+        let spanResult = document.getElementById("result");
+        let result = 1;
+        while(inputNumber > 1)
+        {
+            result *= inputNumber;
+            inputNumber--;
+        }
+        spanResult.innerHTML = result;
+    }
+
+    recursive = () =>{
+        let inputNumber = parseInt(document.getElementById("inputNumber").value);
+        let spanResult = document.getElementById("result");
+        let result = factorial(inputNumber)
+        spanResult.innerHTML = result;
+    }
+    
+
+    factorial = (number) =>
+    {
+        if(number <= 1) return 1;
+        return  number * factorial(number - 1);
+    }
+</script>
